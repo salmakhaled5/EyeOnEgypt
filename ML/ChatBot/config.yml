@@ -1,0 +1,34 @@
+language: en
+pipeline:
+- name: WhitespaceTokenizer
+- name: RegexFeaturizer
+- name: LexicalSyntacticFeaturizer
+- name: CountVectorsFeaturizer
+- name: CountVectorsFeaturizer
+  analyzer: "char_wb"
+  min_ngram: 1
+  max_ngram: 4
+- name: CountVectorsFeaturizer
+  analyzer: "char"
+  min_ngram: 3
+  max_ngram: 5
+- name: DIETClassifier
+  epochs: 100
+- name: FallbackClassifier
+  threshold: 0.4
+  ambiguity_threshold: 0.35
+- name: ResponseSelector
+  epochs: 100
+
+policies:
+- name: AugmentedMemoizationPolicy
+  max_history: 2
+- name: MemoizationPolicy
+- name: TEDPolicy
+  max_history: 5
+  epochs: 100
+- name: RulePolicy
+  core_fallback_threshold: 0.35
+  core_fallback_action_name: "action_default_fallback"
+  enable_fallback_prediction: true
+assistant_id: 20230502-051453-moderato-tom
