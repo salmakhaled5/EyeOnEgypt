@@ -1,0 +1,145 @@
+version: "3"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_sad
+
+- story: ask about time to visit Egypt
+  steps:
+  - intent: time_to_visit
+  - action: utter_time_to_visit
+
+- story: ask about weather in egypt
+  steps:
+  - intent: temperature_in_egypt
+  - action: utter_temperature_in_egypt
+
+- story: ask about events and entertainment in egypt
+  steps:
+  - intent: events_and_entertainment
+  - action: utter_events_and_entertainment
+
+- story: ask about emergency services number in egypt
+  steps:
+  - intent: emergency_services
+  - action: utter_emergency_services
+
+- story: arabic_phrases
+  steps:
+  - intent: ask_arabic_phrases
+  - action: utter_arabic_phrases
+
+- story: hello_arabic
+  steps:
+  - intent: ask_hello_arabic
+  - action: utter_hello_arabic
+
+- story: speak_arabic
+  steps:
+  - intent: ask_speak_arabic
+  - action: utter_speak_arabic
+
+- story: speak_english
+  steps:
+  - intent: ask_speak_english
+  - action: utter_speak_english
+
+- story: egypt_currency
+  steps:
+  - intent: ask_egypt_currency
+  - action: utter_egypt_currency
+
+- story: program
+  steps:
+  - intent: ask_program
+  - action: utter_ask_program
+
+- story: Exploring path
+  steps:
+  - intent: Explore_Egypt
+  - action: utter_Egypt
+
+- story: food path
+  steps:
+  - intent: food
+  - action: utter_FoodInfo
+
+- story: drink path
+  steps:
+  - intent: drink
+  - action: utter_DrinkInfo
+
+- story: tips path
+  steps:
+  - intent: tipping
+  - action: utter_TippingEtiquette
+
+- story: Where to shop path
+  steps:
+  - intent: Shopping_places
+  - action: utter_ShoppingPlaces
+
+- story: popular Souvenirs path
+  steps:
+  - intent: Souvenirs
+  - action: utter_PopularSouvenirs
+
+- story: Payment path
+  steps:
+  - intent: Shopping_payment
+  - action: utter_Payment
+
+- story: query location
+  steps:
+  - intent: location
+  - action: query_landmark_location
+
+- story: query description
+  steps:
+  - intent: description
+  - action: query_landmark_description
+
+- story: query opening_hours
+  steps:
+  - intent: opening_hours
+  - action: query_landmark_openinghours
+
+- story: query ticket_price
+  steps:
+  - intent: ticket_price
+  - action: query_landmark_ticketprice
+
+- story: query activity
+  steps:
+  - intent: activity
+  - action: query_landmark_activity
+  
+- story: classify place
+  steps:
+  - intent: provide_place_url
+  - action: action_store_place_url
+  - action: action_classify_place
+  - action: action_reset_place
+
+- story: Extract text
+  steps:
+  - intent: provide_image_url
+  - action: action_store_image_url
+  - action: action_extract_text
+
+- story: say goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye

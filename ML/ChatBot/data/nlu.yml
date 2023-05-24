@@ -1,0 +1,306 @@
+version: "3"
+
+nlu:
+- lookup: landmark
+  examples: |
+    - baron palace
+    - bent pyramid
+    - bab zuwaila
+    - deir al-bahari (hatshepsut temple)
+    - edfu_s temple of horus
+    - the unfinished obelisk
+    - great sphinx of giza
+    - kalabsha temple
+    - luxor temple
+    - medinet habu temple
+    - pyramid of djoser
+    - pyramid of teti
+    - ramesseum temple
+    - saladin citadel
+    - temple of hathor
+    - temple of isis
+    - temple of kom ombo
+    - the egyptian museum
+    - The temple of nefertari
+    - The temple of ramesses ii
+    - pyramid of giza
+    - abdeen palace
+    - bahariya oasis
+    - el-azhar mosque
+    - amr ibn al-as mosque
+    - al-azhar park
+    - luxor museum
+    - wadi el gemal national park
+    - ras mohammed national park
+    - giza park
+    - siwa oasis
+
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - good
+    - fine
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: time_to_visit
+  examples: |
+    - what is the best time of year to visit Egypt?
+    - What month is best to go to Egypt?
+    - what is the best season to visit Egypt?
+
+- intent: temperature_in_egypt
+  examples: |
+    - what is the average temperature in the summer?
+    - What's the weather expected in Egypt?
+    - What's the temperature in Egypt?
+    - what is the climate like?
+- intent: events_and_entertainment
+  examples: |
+    - what are some upcoming events in Egypt?
+    - are there any popular annual festivals in Egypt?
+    - what are some important festivals and holidays in Egypt?
+
+- intent: emergency_services
+  examples: |
+    - what is the emergency number for the police in Egypt?
+    - how do I contact the fire department in case of an emergency?
+    - what is the number of medical emergencies in Egypt?
+    - can you recommend a reliable ambulance service in Egypt?
+    - List of Emergency Phone Numbers?
+    - what is Emergency Phone Numbers in egypt?
+
+- intent: ask_arabic_phrases
+  examples: |
+    - what are some basic Arabic phrases I should know as a tourist in Egypt?
+    - What is the Arabic phrase for travel?
+    - What are the basic Arabic greetings in Egypt?
+    - What Are The Most Useful Words/Phrases When Traveling in Egypt?
+
+- intent: ask_hello_arabic
+  examples: |
+    - how do I say "hello" in Arabic?
+    - What is the Arabic greeting for hello?
+    - What's hello in Egyptian?
+    - How do you greet Arabic?
+    - How to Say Hello in Arabic?
+
+- intent: ask_speak_arabic
+  examples: |
+    - what is the most common language spoken in Egypt?
+    - How much of Egypt speak Arabic?
+    - What Language Is Spoken In Egypt?
+    - Is the spoken language Arabic the most in Egypt?
+    - Do people in Egypt speak Arabic?
+
+- intent: ask_speak_english
+  examples: |
+    - do many people in Egypt speak English?
+    - How common is English spoken in Egypt?
+    - Can you visit Egypt without speaking Arabic?
+    - What percent of Egyptians speak English?
+    - How Widely Spoken is English in Egypt?
+    - How Widely Spoken is English in Egypt?
+
+- intent: ask_egypt_currency
+  examples: |
+    - what is the currency in Egypt?
+    - Could you tell me what the official currency of Egypt is?
+
+- intent: ask_program
+  examples: |
+    - What you must visit in Egypt?
+    - What are the top things to see in Egypt?
+    - What activities can people do in Egypt?
+    - What to do in Egypt?
+
+- intent: Explore_Egypt
+  examples: |
+    - what are the best places to visit in Egypt?
+    - what are the top things to see in Egypt?
+    - what are the must-see sites in Egypt?
+    - can you suggest some activities to do in Egypt?
+    - what are the popular tourist destinations in Egypt?
+
+- intent: food
+  examples: |
+    - what are some traditional Egyptian dishes to try?
+    - where can I find the best street food?
+    - what is the main dish in Egypt?
+    - what is the most popular traditional food in Egypt?
+    - what’s the most famous Egyptian food?
+
+- intent: drink
+  examples: |
+    - What are some popular drinks in Egypt?
+    - Where can I find the best tea in Egypt?
+    - What is the national drink of Egypt?
+    - Are there any unique or traditional drinks I should try in Egypt?
+    - Can I find alcohol easily in Egypt or is it restricted?
+
+- intent: tipping
+  examples: |
+    - Is it customary to tip at restaurants in Egypt?
+    - What is the general tipping etiquette in Egypt?
+    - How much should I tip at a restaurant in Egypt?
+    - what is the tipping etiquette in Egypt?
+
+- intent: Shopping_places
+  examples: |
+    - What are some of the best local markets to shop for souvenirs in Egypt?
+    - What are some popular markets to buy souvenirs in Egypt?
+    - Where can I find the best souvenirs in Egypt?
+
+- intent: Souvenirs
+  examples: |
+    - What are some of the most unique and memorable souvenirs to buy in Egypt?
+    - What are some of the best types of souvenirs to buy in Egypt?
+    - What are some of the most sought-after souvenirs that tourists typically look for when shopping in Egypt?
+
+- intent: Shopping_payment
+  examples: |
+    - How much should I expect to spend on souvenirs in Egypt?
+    - How much should I budget for shopping in Egypt, including souvenirs and other items?
+    - Can I use credit cards or should I have cash ready when shopping for souvenirs in Egypt?
+
+- intent: location
+  examples: |
+    - what is the location of [baron palace](landmark)?
+    - what is the location of [bent pyramid](landmark)?
+    - Where is the [bab zuwaila](landmark) located in Egypt?
+    - Where is the [deir al-bahari (hatshepsut temple)](landmark) located?
+    - Where is the [edfu_s temple of horus](landmark) located in relation to the Nile River in Egypt?
+
+- intent: description
+  examples: |
+    - What is the history behind the construction of [the unfinished obelisk](landmark) in Giza?
+    - What is the history behind the construction of [great sphinx of giza](landmark) in Giza?
+    - What is the story behind the construction of [kalabsha temple](landmark) in Luxor?
+    - How did the ancient Egyptians build [luxor temple](landmark)?
+    - How did the ancient Egyptians build [medinet habu temple](landmark)?
+
+- intent: opening_hours
+  examples: |
+    - What are the opening hours of [pyramid of djoser](landmark)?
+    - What are the opening hours of [temple of isis](landmark)?
+    - What time does [saladin citadel](landmark) open and close?
+    - What time does [giza park](landmark) open and close?
+    - What time does [ras mohammed national park](landmark) open and close?
+    - What are the opening hours of [siwa oasis](landmark)?
+
+- intent: ticket_price
+  examples: |
+    - What is the ticket price of [pyramid of giza](landmark)?
+    - What is the ticket price of [pyramid of teti](landmark)?
+    - How much does it cost to visit [ramesseum temple](landmark)?
+    - How much does it cost to visit [saladin citadel](landmark)?
+    - What is the entrance fee to [el-azhar mosque](landmark)?
+    - What is the entrance fee to [amr ibn al-as mosque](landmark)?
+    - What is the entrance fee to [al-azhar park](landmark)?
+    - How much does it cost to visit [luxor museum](landmark)?
+
+- intent: activity
+  examples: |
+    - What are some popular activities to do at [temple of kom ombo](landmark)?
+    - What are some popular activities to do at [the egyptian museum](landmark)?
+    - What are some popular activities to do at [The temple of nefertari](landmark)?
+    - What are some popular activities to do at [The temple of ramesses ii](landmark)?
+    - What kind of activity in [pyramid of giza](landmark)?
+    - What kind of activity in [abdeen palace](landmark)?
+    - What kind of activity in [bahariya oasis](landmark)?
+
+- intent: provide_place_url
+  examples: |
+    - what is this place? [https://example.com/image.jpg](place_url)
+    - What place in this image? [https://example.com/image.jpg](place_url)
+    - What is this image about? [https://example.com/image.jpg](place_url)
+    - What is the name of the place in this image? [https://example.com/image.jpg](place_url)
+    - What is the location shown in the image? [https://example.com/image.jpg](place_url)
+    - I want to know more information about this [https://example.com/image.jpg](place_url)
+    - I don't know the name of this landmark [https://example.com/image.jpg](place_url)
+    - where am I? [https://example.com/image.jpg](place_url)
+    - Can you identify the place in this image? [https://example.com/image.jpg](place_url)
+    - What is the name of this place in this image? [https://example.com/image.jpg](place_url)
+
+- intent: provide_image_url
+  examples: |
+    - Please translate the text on this image [https://example.com/image.jpg](image_url)
+    - What does the text on this image mean? [https://example.com/image.jpg](image_url)
+    - What is the text in this image saying? [https://example.com/image.jpg](image_url)
+    - Can you tell me what is written in this image [https://example.com/image.jpg](image_url)
+    - Extract the text written in this image [https://example.com/image.jpg](image_url)

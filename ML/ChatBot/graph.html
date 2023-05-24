@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Rasa Core Visualisation</title>
+    <script src="https://dagrejs.github.io/project/dagre-d3/latest/dagre-d3.min.js"></script>
+    <script src="https://dagrejs.github.io/project/dagre/latest/dagre.min.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://dagrejs.github.io/project/graphlib-dot/v0.6.3/graphlib-dot.js"></script>
+</head>
+<body>
+<div id="errormsg" style="color: #b00"></div>
+<svg>
+    <style id="graph-style">
+        .node.invisible > rect {
+            display: none;
+        }
+
+        .node.start > rect {
+            fill: #7f7;
+            rx: 30;
+            ry: 18;
+        }
+
+        .node.end > rect {
+            fill: #f77;
+            rx: 30;
+            ry: 18;
+        }
+
+        .node:not(.active) > rect, .node:not(.active) > .label {
+            opacity: 0.4;
+        }
+
+        .edgePath:not(.active) path {
+            opacity: 0.4;
+        }
+
+        .node.ellipsis > rect {
+            fill: #CCC;
+        }
+
+        .node.intent > rect {
+            fill: #7ff;
+        }
+
+        .node.dashed > rect {
+            stroke-dasharray: 5;
+        }
+
+        text {
+            font-weight: 300;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serf, serif;
+            font-size: 14px;
+            color: #1f1d1d;
+        }
+
+        .node rect {
+            stroke: #444;
+            fill: #fff;
+            stroke-width: 1.5px;
+        }
+
+        .edgePath path {
+            stroke: #333;
+            stroke-width: 1.5px;
+        }
+
+        svg {
+            position: fixed;
+            top: 10px;
+            left: 0;
+            height: 100%;
+            width: 100%
+        }
+    </style>
+    <g></g>
+</svg>
+<script>
+
+  function serveGraph() {
+    let oldInputGraphValue;
+
+    const url = 'visualization.dot';
+    const refreshInterval = 500;
+
+    // trigger a refresh by fetching an updated graph
+    setInterval(function () {
+      fetch(url).then(r => r.text()).then(dot => {
+        document.getElementById('errormsg').innerHTML = '';
+        if (oldInputGraphValue === dot) return;
+
+        oldInputGraphValue = dot;
+        drawGraph(dot);
+      }).catch(err => {
+        document.getElementById('errormsg').innerHTML =
+          'Failed to update plot. (' + err.message + ')';
+      });
+    }, refreshInterval);
+  }
+
+  function drawGraph(graph) {
+    let g = graphlibDot.read(graph);
+    // Set margins, if not present
+    if (!g.graph().hasOwnProperty("marginx") &&
+      !g.graph().hasOwnProperty("marginy")) {
+      g.graph().marginx = 20;
+      g.graph().marginy = 20;
+    }
+    g.graph().transition = function (selection) {
+      return selection.transition().duration(300);
+    };
+    // Render the graph into svg g
+    d3.select("svg g").call(render, g);
+  }
+  // Set up zoom support
+  const svg = d3.select("svg"),
+    inner = d3.select("svg g"),
+    zoom = d3.zoom().on("zoom", function () {
+      inner.attr("transform", d3.event.transform);
+    });
+  svg.call(zoom);
+
+  // Create and configure the renderer
+  const render = dagreD3.render();
+
+  let isClient = false;
+  isClient = true;
+
+  if (isClient) {
+    // Mark all nodes and their edges as active
+    cssRules = document.getElementById('graph-style').sheet.cssRules;
+    cssRules[3].style.opacity = 1;
+    cssRules[4].style.opacity = 1;
+
+    let graph;
+    graph = `digraph  {
+0 [class="start active", fillcolor=green, fontsize=12, label=START, style=filled];
+"-1" [class=end, fillcolor=red, fontsize=12, label=END, style=filled];
+1 [class="", fontsize=12, label=utter_hello_arabic];
+2 [class="", fontsize=12, label=utter_speak_arabic];
+3 [class="", fontsize=12, label=utter_speak_english];
+4 [class="", fontsize=12, label=utter_egypt_currency];
+5 [class="", fontsize=12, label=utter_ask_program];
+6 [class="", fontsize=12, label=utter_Egypt];
+7 [class="", fontsize=12, label=utter_FoodInfo];
+8 [class="", fontsize=12, label=utter_DrinkInfo];
+9 [class="", fontsize=12, label=utter_TippingEtiquette];
+10 [class="", fontsize=12, label=utter_ShoppingPlaces];
+11 [class="", fontsize=12, label=utter_PopularSouvenirs];
+12 [class="", fontsize=12, label=utter_Payment];
+13 [class="", fontsize=12, label=query_landmark_location];
+14 [class="", fontsize=12, label=query_landmark_description];
+15 [class="", fontsize=12, label=query_landmark_openinghours];
+16 [class="", fontsize=12, label=query_landmark_ticketprice];
+17 [class="", fontsize=12, label=query_landmark_activity];
+18 [class="", fontsize=12, label=action_store_place_url];
+19 [class="", fontsize=12, label=action_classify_place];
+20 [class="", fontsize=12, label=action_reset_place];
+21 [class="", fontsize=12, label=action_store_image_url];
+22 [class="", fontsize=12, label=action_extract_text];
+23 [class="", fontsize=12, label=utter_goodbye];
+24 [class="", fontsize=12, label=utter_greet];
+25 [class="", fontsize=12, label=utter_happy];
+27 [class="", fontsize=12, label=utter_sad];
+28 [class="", fontsize=12, label=utter_time_to_visit];
+29 [class="", fontsize=12, label=utter_temperature_in_egypt];
+30 [class="", fontsize=12, label=utter_events_and_entertainment];
+31 [class="", fontsize=12, label=utter_emergency_services];
+32 [class="", fontsize=12, label=utter_arabic_phrases];
+33 [class="", fontsize=12, label="..."];
+36 [class="", fontsize=12, label=utter_please_rephrase];
+37 [class=intent, fillcolor=lightblue, label="What is the Arabic greeting for hello?", shape=rect, style=filled];
+38 [class=intent, fillcolor=lightblue, label="Do people in Egypt speak Arabic?", shape=rect, style=filled];
+39 [class=intent, fillcolor=lightblue, label="do many people in Egypt speak English?", shape=rect, style=filled];
+40 [class=intent, fillcolor=lightblue, label="what is the currency in Egypt?", shape=rect, style=filled];
+41 [class=intent, fillcolor=lightblue, label="What you must visit in Egypt?", shape=rect, style=filled];
+42 [class=intent, fillcolor=lightblue, label="what are the top things to see in Egypt?", shape=rect, style=filled];
+43 [class=intent, fillcolor=lightblue, label="what are some traditional Egyptian dishes to try?", shape=rect, style=filled];
+44 [class=intent, fillcolor=lightblue, label="What are some popular drinks in Egypt?", shape=rect, style=filled];
+45 [class=intent, fillcolor=lightblue, label="How much should I tip at a restaurant in Egypt?", shape=rect, style=filled];
+46 [class=intent, fillcolor=lightblue, label="What are some popular markets to buy souvenirs in Egypt?", shape=rect, style=filled];
+47 [class=intent, fillcolor=lightblue, label="What are some of the most unique and memorable souvenirs to buy in Egypt?", shape=rect, style=filled];
+48 [class=intent, fillcolor=lightblue, label="Can I use credit cards or should I have cash ready when shopping for souvenirs in Egypt?", shape=rect, style=filled];
+49 [class=intent, fillcolor=lightblue, label="Where is the bab zuwaila located in Egypt?", shape=rect, style=filled];
+50 [class=intent, fillcolor=lightblue, label="How did the ancient Egyptians build luxor temple?", shape=rect, style=filled];
+51 [class=intent, fillcolor=lightblue, label="What time does saladin citadel open and close?", shape=rect, style=filled];
+52 [class=intent, fillcolor=lightblue, label="How much does it cost to visit ramesseum temple?", shape=rect, style=filled];
+53 [class=intent, fillcolor=lightblue, label="What kind of activity in pyramid of giza?", shape=rect, style=filled];
+54 [class=intent, fillcolor=lightblue, label="What is this image about? https://example.com/image.jpg", shape=rect, style=filled];
+55 [class=intent, fillcolor=lightblue, label="What is the text in this image saying? https://example.com/image.jpg", shape=rect, style=filled];
+56 [class=intent, fillcolor=lightblue, label="see you around", shape=rect, style=filled];
+57 [class=intent, fillcolor=lightblue, label="hey there", shape=rect, style=filled];
+58 [class=intent, fillcolor=lightblue, label="what is the best time of year to visit Egypt?", shape=rect, style=filled];
+59 [class=intent, fillcolor=lightblue, label="what is the average temperature in the summer?", shape=rect, style=filled];
+60 [class=intent, fillcolor=lightblue, label="are there any popular annual festivals in Egypt?", shape=rect, style=filled];
+61 [class=intent, fillcolor=lightblue, label="List of Emergency Phone Numbers?", shape=rect, style=filled];
+62 [class=intent, fillcolor=lightblue, label="what are some basic Arabic phrases I should know as a tourist in Egypt?", shape=rect, style=filled];
+63 [class=intent, fillcolor=lightblue, label="so so perfect", shape=rect, style=filled];
+64 [class=intent, fillcolor=lightblue, label=sad, shape=rect, style=filled];
+65 [class=intent, fillcolor=lightblue, label="cee you later", shape=rect, style=filled];
+66 [class=intent, fillcolor=lightblue, label="/nlu_fallback", shape=rect, style=filled];
+0 -> 33  [class="", key=NONE, label=""];
+0 -> 37  [class="", key=0];
+0 -> 38  [class="", key=0];
+0 -> 39  [class="", key=0];
+0 -> 40  [class="", key=0];
+0 -> 41  [class="", key=0];
+0 -> 42  [class="", key=0];
+0 -> 43  [class="", key=0];
+0 -> 44  [class="", key=0];
+0 -> 45  [class="", key=0];
+0 -> 46  [class="", key=0];
+0 -> 47  [class="", key=0];
+0 -> 48  [class="", key=0];
+0 -> 49  [class="", key=0];
+0 -> 50  [class="", key=0];
+0 -> 51  [class="", key=0];
+0 -> 52  [class="", key=0];
+0 -> 53  [class="", key=0];
+0 -> 54  [class="", key=0];
+0 -> 55  [class="", key=0];
+0 -> 56  [class="", key=0];
+0 -> 57  [class="", key=0];
+0 -> 58  [class="", key=0];
+0 -> 59  [class="", key=0];
+0 -> 60  [class="", key=0];
+0 -> 61  [class="", key=0];
+0 -> 62  [class="", key=0];
+1 -> "-1"  [class="", key=NONE, label=""];
+2 -> "-1"  [class="", key=NONE, label=""];
+3 -> "-1"  [class="", key=NONE, label=""];
+4 -> "-1"  [class="", key=NONE, label=""];
+5 -> "-1"  [class="", key=NONE, label=""];
+6 -> "-1"  [class="", key=NONE, label=""];
+7 -> "-1"  [class="", key=NONE, label=""];
+8 -> "-1"  [class="", key=NONE, label=""];
+9 -> "-1"  [class="", key=NONE, label=""];
+10 -> "-1"  [class="", key=NONE, label=""];
+11 -> "-1"  [class="", key=NONE, label=""];
+12 -> "-1"  [class="", key=NONE, label=""];
+13 -> "-1"  [class="", key=NONE, label=""];
+14 -> "-1"  [class="", key=NONE, label=""];
+15 -> "-1"  [class="", key=NONE, label=""];
+16 -> "-1"  [class="", key=NONE, label=""];
+17 -> "-1"  [class="", key=NONE, label=""];
+18 -> 19  [class="", key=NONE, label=""];
+19 -> 20  [class="", key=NONE, label=""];
+20 -> "-1"  [class="", key=NONE, label=""];
+21 -> 22  [class="", key=NONE, label=""];
+22 -> "-1"  [class="", key=NONE, label=""];
+23 -> "-1"  [class="", key=NONE, label=""];
+24 -> 63  [class="", key=0];
+24 -> 64  [class="", key=0];
+25 -> "-1"  [class="", key=NONE, label=""];
+27 -> "-1"  [class="", key=NONE, label=""];
+28 -> "-1"  [class="", key=NONE, label=""];
+29 -> "-1"  [class="", key=NONE, label=""];
+30 -> "-1"  [class="", key=NONE, label=""];
+31 -> "-1"  [class="", key=NONE, label=""];
+32 -> "-1"  [class="", key=NONE, label=""];
+33 -> 65  [class="", key=0];
+33 -> 66  [class="", key=0];
+36 -> "-1"  [class="", key=NONE, label=""];
+37 -> 1  [class="", key=0];
+38 -> 2  [class="", key=0];
+39 -> 3  [class="", key=0];
+40 -> 4  [class="", key=0];
+41 -> 5  [class="", key=0];
+42 -> 6  [class="", key=0];
+43 -> 7  [class="", key=0];
+44 -> 8  [class="", key=0];
+45 -> 9  [class="", key=0];
+46 -> 10  [class="", key=0];
+47 -> 11  [class="", key=0];
+48 -> 12  [class="", key=0];
+49 -> 13  [class="", key=0];
+50 -> 14  [class="", key=0];
+51 -> 15  [class="", key=0];
+52 -> 16  [class="", key=0];
+53 -> 17  [class="", key=0];
+54 -> 18  [class="", key=0];
+55 -> 21  [class="", key=0];
+56 -> 23  [class="", key=0];
+57 -> 24  [class="", key=0];
+58 -> 28  [class="", key=0];
+59 -> 29  [class="", key=0];
+60 -> 30  [class="", key=0];
+61 -> 31  [class="", key=0];
+62 -> 32  [class="", key=0];
+63 -> 25  [class="", key=0];
+64 -> 27  [class="", key=0];
+65 -> 23  [class="", key=0];
+66 -> 36  [class="", key=0];
+}
+`;
+    drawGraph(graph);
+  } else {
+    serveGraph();
+  }
+
+
+</script>
+</body>
+</html>

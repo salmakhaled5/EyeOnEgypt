@@ -1,0 +1,348 @@
+version: "3"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - time_to_visit
+  - temperature_in_egypt
+  - events_and_entertainment
+  - emergency_services
+  - ask_arabic_phrases
+  - ask_hello_arabic
+  - ask_speak_arabic
+  - ask_speak_english
+  - ask_egypt_currency
+  - ask_program
+  - Explore_Egypt
+  - food
+  - drink
+  - tipping
+  - Shopping_places
+  - Souvenirs
+  - Shopping_payment
+  - location
+  - description
+  - opening_hours
+  - ticket_price
+  - activity
+  - provide_place_url
+  - provide_image_url
+
+entities:
+  - landmark
+  - place_url
+  - image_url
+
+slots:
+   landmark:
+     type: text
+     mappings:
+     - type: from_entity
+       entity: landmark
+
+   place_url:
+     type: text
+     mappings:
+       - entity: place_url
+         type: from_entity
+
+   image_url:
+     type: text
+     mappings:
+       - entity: image_url
+         type: from_entity
+
+responses:
+  utter_please_rephrase:
+  - text: "I'm sorry, I didn't quite understand that. Could you rephrase?"
+
+  utter_greet:
+  - text: "Hey! How are you?
+           Hello! How can I assist you today?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+  - text: "Awesome!"
+  - text: "Great!"
+
+  utter_sad:
+  - text: "I'm sorry! Hope you feel better soon"
+
+  utter_time_to_visit:
+  - text: "The best time to visit Egypt is during winter from October to April,when temperatures are lower.
+           The most popular time for tourist is December and January.
+           Tourism in Egypt is booming this time of the year so make sure you plan in advance.
+           March, April, and September are also good months to travel to Egypt if you plan to avoid the crowd.
+           The daytime weather can be quite pleasant and its the best time to enjoy water activities such as snorkeling, scuba diving and swimming."
+
+  utter_temperature_in_egypt:
+  - text: "Egypt’s climate is dry, hot, and dominated by desert.
+           It has a mild winter season with rain falling along coastal areas, and a hot and dry summer season (May to September).
+           Daytime temperatures vary by season and change with the prevailing winds.
+           In the coastal regions, temperatures range between average winter minimums of 14°C (November to April) and average summer maximums of 30°C (May to October).
+           Temperatures vary widely in the inland desert areas, especially during the summer, where they range from 7°C at night to 43°C during the day.
+           During winter, temperatures in the desert fluctuate less dramatically, but can reach 0°C at night and as high as 18°C during the day.
+           Egypt also experiences hot wind storms, known as “khamsin”, which carry sand and dust and sweep across the northern coast of Africa.
+           These khamsin storms typically occur between March and May and can increase the temperature by 20°C in two hours; and can last for several days."
+
+  utter_events_and_entertainment:
+  - text: "
+          January
+              7 January – Coptic Orthodox Christmas
+                An estimated 10–15 per cent of Egypt’s population are Christian, and the vast majority practise Coptic Orthodox Christianity.
+                While it's still a celebration of the birth of Jesus Christ, Coptic Christmas follows the Julian calendar instead of the Gregorian calendar that places Christmas in December.
+                It's preceded by an epic 43-day fast, meaning people are primed for a feast.
+           February
+              22 February – Abu Simbel Sun Festival
+                Abu Simbel is one of the premier antiquities in all of Egypt, and twice a year (this festival is also held on 22 October) you can see the sun god statues of the inner sanctuary, normally shrouded in darkness, illuminated by a beam of sunlight.
+                Locals celebrate with traditional Nubian dance, street food (save stomach space for some fresh koshari) and live music outside the temple.
+
+            April
+                Coptic Orthodox Easter
+                  Like Coptic Christmas, Coptic Easter is preceded by a long fast – in this case a 55-day one.
+                  As a result, a vigil on Coptic Easter eve ends with incredible feast that continues into the next day.
+                  Dates change every year.
+
+                Sham Ennessim
+                  The day after Coptic Easter, Christians and non-Christians alike take to Egypt’s parks and gardens to celebrate the beginning of spring on the national public holiday Sham Ennessim.
+                  Date changes every year.
+
+            June
+                Ramadan
+                  This Islamic holy month of daytime fasting (and evening feasting) is observed throughout Egypt.
+                  If you travel during this period, the dates of which change every year, you’ll find locals more subdued and streets quiet during the daytime when folks are fasting.
+                  It’s also possible that some historical sites will operate on limited hours.
+                  Travellers are not expected to observe the fast, but drinking, smoking and scoffing down street food in public during the daylight hours is frowned upon.
+                  Whether or not you enjoy travelling in Egypt during Ramadan will depend on your reasons for travel.
+                  If you’re interested in local customs and traditions, then you may find it enriching.
+                  If you would rather be able to see things as quickly and efficiently as possible, this may not be the best month for you to travel to Egypt.
+
+                Sandbox Music Festival
+                  For three days in June (dates change annually), Egypt’s young and hip descend on El Gouna for an outdoor music festival that takes place right on the beach. House, techno and dance music DJs draw revellers that party well into the night.
+                  Travellers who want to immerse themselves in young and contemporary Egyptian culture (or just love dancing) will get a kick out of this beachside fest.
+
+            August
+                Eid al-Adha
+                  This four-day Islamic celebration (dates change annually) commemorates the willingness of Abraham to sacrifice his son in quite a literal way – the ceremonial slaughter of a goat or sheep by those who can afford it.
+                  This is followed by a few days of feasting and partying among friends and family. If you travel during this period, you’ll likely be invited to share in the meals and festivities with locals you meet along the way.
+
+                El Hijra (Islamic New Year)
+                  Recently made a public holiday, El Hijra is celebrated by members of the Muslim Sufi sect in a relatively solemn way (at least compared to other holidays). There isn’t any great benefit to being in the country for Islamic New Year, but it won’t disrupt your plans much either. Dates change each year.
+
+            September
+                  September 11 or 12 – Coptic Orthodox New Year
+                    Celebrated on either September 11 or September 12 (depending on whether there’s a leap year coming up) Coptic New Year is a celebration of martyrs. There’s feasting, of course, but nothing like the mass celebrations that occur on other Coptic holidays.
+
+            October
+                  22 October – Abu Simbel Sun Festival
+                    Abu Simbel is one of the premier antiquities in all of Egypt, and twice a year (this festival is also held on 22 February) you can see the sun god statues of the inner sanctuary, normally shrouded in darkness, illuminated by a beam of sunlight.
+                    Locals celebrate with traditional Nubian dances being performed, street food everywhere (save stomach space for some fresh koshari) and live music outside the temple.
+
+            November
+                  Mild un Nabi
+                    This nationally recognised public holiday is held in celebration of the birth of the Prophet Mohammed."
+
+  utter_emergency_services:
+  - text: " Ambulance service: 123
+            Police: 122
+            fire fighting: 180
+            Tourist police: 126"
+
+  utter_arabic_phrases:
+  - text: "As-aalaam alaikum: Peace be upon you
+          Sabah al-khair: Good morning
+          Shukran: Thank you
+          Lazeeza: Delicious
+          Najma: Stars
+          Jameela: Beautiful
+          Ma'a: Water
+          Habibi: My love
+          Insha Allah: God willing
+          Yalla: Let’s go"
+
+  utter_hello_arabic:
+  - text: "As-salaam 'alykum – This is arguably the most common greeting. It means, “peace be upon you”.
+          Ahlan (hello). This can be used for anyone at any time of the day.
+          Marhaba (Welcome) It comes from the word “rahhaba” which means “to welcome”.
+          "
+  utter_speak_arabic:
+  - text: "Egyptian Arabic is the commonly spoken language, based on the dialect of Cairo, and is occasionally written in Arabic script, or in the Arabic chat alphabet mostly on new communication services."
+  - text: "Over 93% of the total population – or over 82 million people – in Egypt speak Arabic, which is the official language of the nation."
+
+  utter_speak_english:
+  - text: "Most educated Egyptians are fluent in English or French or both, in addition to Arabic."
+  - text: "Most educated Egyptians speak English, it´s their second language. the non-educated don´t speak English and they are around 25%."
+  - text: "Approximately one-fifth of Egyptians speak English. It is the most widely spoken foreign language in the country."
+  utter_egypt_currency:
+  - text: "The Egyptian pound is the official currency of Egypt"
+  - text: "The official currency of Egypt is the Egyptian Pound (EGP). The symbol used for the EGP is E £."
+
+  utter_ask_program:
+  - text: "	2 days Cairo
+  		  	Day1:
+			Giza Pyramids Complex
+			The Great Pyramid
+			The Great Sphinx
+			The Valley Temple
+			The Grand Egyptian Museum
+			Saqqara Step Pyramid
+			Memphis City The city
+		   Day 2:
+			The Egyptian Museum
+			Salah El Din Citadel
+			Mohamed Ali Mosque
+			The National Museum of Egyptian Civilization
+			Al Muizz Street
+			Khan El Khalili Bazaar
+		3 Days Cairo, Luxor & Abu Simbel Tour
+			Day 1:
+			Giza Pyramids Complex
+			The Great Pyramid
+			The Great Sphinx
+			The Valley Temple
+			The Grand Egyptian Museum
+			The Egyptian Museum
+			Day 2:
+			The Impressive Two Temples of Abu Simbel
+			Day 3:
+			Valley of the Kings
+			Hatshepsut Temple
+			Colossi of Memnon
+			Karnak Temple
+		4 Days Cairo, Luxor, Aswan & Abu Simbel Tour
+			Day 1:
+			Giza Pyramids Complex
+			The Great Pyramid
+			The Great Sphinx
+			The Valley Temple
+			The Grand Egyptian Museum
+			The Egyptian Museum
+			Day 2:
+			Valley of the Kings
+			Hatshepsut Temple
+			Colossi of Memnon
+			Karnak Temple
+			Day 3:
+			The High Dam
+			The Unfinished Obelisk
+			Philae Temple
+			Day 4:
+			Abu Simbel Temples
+		5 Days Cairo, Luxor, Aswan & Abu Simbel Tour
+			Day 1:
+			Giza Pyramids Complex
+			The Great Pyramid
+			The Great Sphinx
+			The Valley Temple
+			The Grand Egyptian Museum
+			The Egyptian Museum
+			Day 2:
+			Valley of the Kings
+			Hatshepsut Temple
+			Colossi of Memnon
+			Karnak Temple
+			Day 3:
+			Edfu temple
+			Kom Ombo Temple
+			Day 4:
+			Abu Simbel Temples
+			Day 5:
+			The High Dam
+			The Unfinished Obelisk
+			Philae Temple"
+  utter_Egypt:
+  - text: "Egypt has a lot to offer for travellers interested in history, culture, and natural beauty. Here are some of the best places to visit:
+		   Cairo  Egypt's bustling capital city is a must-see destination. Cairo is home to some of the most famous ancient sites in the world, including the Pyramids of Giza and the Sphinx. The city is also home to the Egyptian Museum, which houses an incredible collection of artefacts from ancient Egypt.
+		   Luxor located on the east bank of the Nile River, Luxor is often called the (world's greatest open-air museum.) The city is home to the Valley of the Kings, where many pharaohs were buried, and the temples of Karnak and Luxor, which are some of the best-preserved ancient temples in Egypt.
+		   Aswan  is a relaxed and charming city located in the south of Egypt. Aswan is famous for its picturesque location on the Nile River and its ancient monuments, including the Philae Temple and the Unfinished Obelisk.
+		   Alexandria  a coastal city in the north of Egypt, Alexandria has a rich history and is home to many ancient sites, including the Catacombs of Kom el Shoqafa and the Roman Amphitheatre.
+		   Sharm El-Sheikh  a popular resort town on the Red Sea, Sharm ElSheikh is famous for its clear waters and vibrant coral reefs. The town is a great destination for snorkelling and diving, and there are many water sports and activities available."
+  utter_FoodInfo:
+  - text: "If you're looking for the best street food in Egypt, head to places like Tahrir Square and Khan el-Khalili in Cairo, or the street food stalls in Alexandria. These areas offer a variety of options, including grilled meats, falafel sandwiches, and stuffed grape leaves.
+		   While there are many delicious dishes to try in Egypt, one of the main dishes is called mahshi. This dish is made by stuffing vegetables such as bell peppers, zucchini, and eggplants with a mixture of rice, herbs, and sometimes minced meat. The stuffed vegetables are then cooked in a tomato-based sauce and served hot.
+		   One of the most popular traditional foods in Egypt is ta'amiya, which is a type of falafel made with fava beans instead of chickpeas. These small, fried balls are typically served on pita bread with salad, tahini sauce, and pickles.
+		   Finally, one of the most famous Egyptian foods is probably kofta. Kofta is made by mixing ground meat with spices and shaping it into small meatballs or patties. The kofta is then grilled or baked and served with a variety of sides such as rice, salad, and bread.
+		   Overall, there are many delicious and unique dishes to try in Egypt, and exploring the local street food scene is a great way to experience the country's culinary culture."
+
+  utter_DrinkInfo:
+  - text: "Here are some popular Egyptian drinks:
+		   1-Hibiscus tea (Karkadeh): This is a popular herbal tea made from hibiscus flowers, which are boiled in water and then sweetened with sugar. It is usually served hot or cold and is known for its refreshing taste.
+		   2-Mint tea (Shai bi-naana): This is a traditional tea made from fresh mint leaves and served with sugar. It is often served after a meal as a digestive aid. You can find tea vendors throughout the country. The best tea in Egypt is often found in local tea shops or cafes, rather than in larger chain restaurants.
+		   3-Sahlab: This is a warm milk-based drink made from ground orchid roots, and sugar, and flavoured with rose water. It is commonly served during the winter months as a warming beverage.
+		   4-Turkish coffee: This is a strong and thick coffee made from finely ground coffee beans and boiled in a pot called a cezve. It is often served with a small glass of water and a piece of candy.
+		   5-Mango juice (Assab): Mangoes are a popular fruit in Egypt, and the juice is a refreshing beverage during the hot summer months.
+		   6-Sugar cane juice (Aseer Asab): This is a sweet juice made by pressing sugar cane stalks through a juicer. It is often served with a squeeze of lemon or lime.
+		   7-Tamarind juice (Tamr Hindi): This is a tangy and sour juice made from the pulp of the tamarind fruit. It is often sweetened with sugar and served cold.
+		   If you’re wondering about alcohol, so, Yes, alcohol is available in Egypt, either in hotels, higher-class restaurants and cafes, pubs, and beer gardens. You will also find off licenses as well. Please note though, it is illegal to drink alcohol in the streets of Egypt."
+  utter_TippingEtiquette:
+  - text: "In Egypt, it is customary to tip at restaurants, as it is a significant part of the culture to show appreciation for good service. The general tipping etiquette in Egypt is to tip between 10-15% of the total bill at restaurants.
+		   It's also common to tip hotel staff, such as housekeeping and bellhops, a few Egyptian pounds per day of your stay. In taxis, rounding up to the nearest whole number or adding an extra few Egyptian pounds is a common practice. Overall, the tipping etiquette in Egypt is quite similar to other countries, but it's essential to be respectful of the local customs and practices.
+		   Tipping should be done discreetly, and handed to the server directly, and it's always appreciated to say (shukran) which means thank you in Arabic. In addition to tipping, you can also show appreciation to service staff in Egypt by being polite and respectful, learning a few Arabic phrases, and acknowledging their hard work and effort.”"
+
+  utter_ShoppingPlaces:
+  - text: "One of the best local markets to shop for souvenirs in Egypt is the Khan el-Khalili market in Cairo. It's one of the oldest and largest markets in the country, and you can find a wide variety of souvenirs such as Egyptian cotton clothing, spices, perfumes, papyrus art, and handcrafted jewellery. The market is also famous for its traditional cafes and restaurants, where you can enjoy some local cuisine and take a break from shopping. The Luxor Souq and the Aswan Souq are also great options for shopping for souvenirs, especially if you're visiting those specific areas of Egypt.
+  		   Also, there are many shops and stalls throughout Egypt that sell high-quality souvenirs. Some examples include the House of Isis in Luxor, the Al-Azhar Street Market in Cairo, and the Nubian Gallery in Aswan. It's always a good idea to shop around and compare prices before making a purchase"
+
+  utter_PopularSouvenirs:
+  - text: "Egypt is known for its rich cultural heritage and traditional handicrafts, which make for great souvenirs.
+  		   Some of the most popular Egyptian handicrafts that make great souvenirs
+  		   include handcrafted jewellery, ceramics, glassware, and textiles. In terms of clothing items, traditional Egyptian clothing such as galabeyas,
+  		   scarves, and shawls are also popular souvenirs. Additionally,
+  		   you can find a variety of other unique items such as Egyptian spices, perfumes, papyrus art, and antique replicas"
+
+  utter_Payment:
+  - text: "The cost of souvenirs in Egypt can vary widely depending on the type of item you're looking to purchase and where you're buying it from. Generally, you can expect to pay anywhere from a few Egyptian pounds to several hundred for a souvenir. for example papyrus paintings, spices, jewellery, and statues of pharaohs and other historical figures. The price of these items will depend on factors such as their size, quality, and intricacy of design.
+		   Also, It's a good idea to have cash on hand when shopping for souvenirs in Egypt, as some vendors may not accept credit cards. Additionally, it's important to keep in mind that there may be fees associated with exchanging currency, so it's a good idea to budget accordingly.
+		   Keep in mind that When shopping for souvenirs in Egypt, it's common to bargain with the vendors to get a better price. It's important to remember that bargaining is a normal part of the shopping experience in Egypt, so don't be afraid to negotiate. However, be respectful and courteous when doing so"
+  utter_goodbye:
+  - text: "Bye"
+  utter_default:
+  - text: "Sorry 😥 I didn't understand this!
+Please rephrase or ask any other question."
+
+
+actions:
+  - utter_greet
+  - utter_time_to_visit
+  - utter_temperature_in_egypt
+  - utter_events_and_entertainment
+  - utter_emergency_services
+  - utter_arabic_phrases
+  - utter_hello_arabic
+  - utter_speak_arabic
+  - utter_speak_english
+  - utter_egypt_currency
+  - utter_ask_program
+  - utter_Egypt
+  - utter_FoodInfo
+  - utter_DrinkInfo
+  - utter_TippingEtiquette
+  - utter_ShoppingPlaces
+  - utter_PopularSouvenirs
+  - utter_Payment
+  - utter_please_rephrase
+  - query_landmark_location
+  - query_landmark_description
+  - query_landmark_openinghours
+  - query_landmark_ticketprice
+  - query_landmark_activity
+  - action_classify_place
+  - action_store_place_url
+  - action_reset_place
+  - action_store_image_url
+  - action_extract_text
+  - action_reset_image
+  - utter_goodbye
+  - utter_default
+  - utter_happy
+  - utter_sad
+
+config:
+  store_entities_as_slots: true
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
