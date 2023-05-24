@@ -1,7 +1,7 @@
 # Landmark Detection
 An image classification deep learning model<br>
 [Our Data](https://drive.google.com/drive/folders/1YjcGdrfVweS7mZ18lgRdO-jM456RsQSo?usp=share_link)
-
+[Our Model](https://drive.google.com/file/d/1f3CoiTAXnAJpK7KbALB6WPIQpId7r1oc/view?usp=sharing)
 ## Data Description
 * **Input:** Image
 * **Output:** Class
